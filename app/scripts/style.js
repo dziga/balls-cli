@@ -2,6 +2,8 @@ $(document).ready(function () {
 
   FE.onPageLoad();
 
+  $('#input_name').focus();
+
   $('#button_main_ok, #button_main_edit').click(function() {
     if (!$(this).hasClass('disabled')) {
       var name;
