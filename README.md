@@ -1,6 +1,10 @@
 # Balls client
 Client for Balls game by https://github.com/peter-kish
 
+## Requirements
+
+```npm, bower, grunt-cli```
+
 ## Install
 
 ```npm install```
@@ -12,3 +16,4 @@ Client for Balls game by https://github.com/peter-kish
 Dev mode ```grunt serve```
 
 Dist mode ```grunt serve:dist```
+
