@@ -8,12 +8,17 @@ var FE = (function () {
     	height: 800
     }
 
+    function onConnected() {
+      PAINTER.enableConnection();
+    }
+
     function onAuthentication() {
       PAINTER.setPlayerName();
     }
 
     function onAuthFailed(reason) {
       PAINTER.displayErrorMessage(reason);
+      PAINTER.enableConnection();
     }
 
     function refreshClientList(clientList) {
@@ -124,7 +129,7 @@ var FE = (function () {
 
     module.onPageLoad = function() {
         module.mainMenu();
-        CL.connect();
+        CL.connect(onConnected);
         CL.onClientListChanged = refreshClientList;
         CL.onGameStarted = startGame;
         CL.onChatMessage = displayChatMessage;
@@ -139,6 +144,11 @@ var FE = (function () {
         window.onresize = onWindowResize;
     }
 
+    module.requestAuthentication = function(name) {
+        if (CL.connected) {
+            CL.requestAuthentication(name, onAuthentication, onAuthFailed);
+        }
+    }
 
     module.setName = function(name) {
         if (CL.authenticated) {

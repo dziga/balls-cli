@@ -4,28 +4,18 @@ $(document).ready(function () {
 
   $('#input_name').focus();
 
-  $('#button_main_ok, #button_main_edit').click(function() {
-    if (!$(this).hasClass('disabled')) {
-      var name;
-      if ($("#set_name:visible").length) {
-        name = $("#set_name").val();
-      }
-      else {
-        name = $("#input_name").val();
-      }
-      FE.setName(name);
-    }
+  $('#button_main_ok').click(function() {
+    var name = $("#input_name").val();
+    $('#button_main_ok').addClass("disabled");
+    FE.requestAuthentication(name);
   });
 
-  $('#input_name').on('input',function(){
-     if($(this).val().length > 0) {
-       $('#button_main_ok').removeClass("disabled");
-     }
-     else {
-       $('#button_main_ok').addClass("disabled");
-     }
-  })
-  .on("keypress", function(event) {
+  $('#button_main_edit').click(function() {
+    var name = $("#set_name").val();
+    FE.setName(name);
+  });
+
+  $('#input_name').on("keypress", function(event) {
     if (event.keyCode === 13 && $("#input_name").val().length > 0){
       $('#button_main_ok').trigger('click');
     }
@@ -175,6 +165,9 @@ var PAINTER = (function () {
           '</tr>'
         );
       }
+    },
+    enableConnection: function() {
+      $('#button_main_ok').removeClass("disabled");
     },
     setPlayerName: function() {
       var name = $('#input_name').val();
