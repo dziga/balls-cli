@@ -75,6 +75,7 @@ module.exports = function (grunt) {
       options: {
         notify: false,
         background: true,
+        ghostMode: false,
         watchOptions: {
           ignored: ''
         }
