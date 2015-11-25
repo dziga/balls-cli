@@ -43,6 +43,17 @@ $(document).ready(function () {
     $('#button_main_host').text('Host');
   });
 
+  $('#back_to_lobby_button').click(function(){
+    $('#screen_game').hide();
+    $('#main_connected').show();
+    $('body').toggleClass("background-color");
+
+    $('#button_main_join').prop('disabled', false);
+    $('#button_main_bot').prop('disabled', false);
+    $('#button_main_host').text('Host');
+    FE.mainMenu();
+  });
+
   $('#button_main_host').click(function() {
     var hosting = FE.hostMenu();
     if (!hosting) {
@@ -205,6 +216,13 @@ var PAINTER = (function () {
       $('#main_connected').hide();
       $('#screen_game').show();
       $('body').toggleClass("background-color");
+    },
+    endGame: function(message) {
+      $('#victory_message').text(message);
+      $('#modal_victory').modal({backdrop: 'static', keyboard: false});
+    },
+    playSoundChecked: function() {
+        return $('#checkbox_main_playsound').is(':checked');
     }
 
   }

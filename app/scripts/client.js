@@ -1,5 +1,6 @@
 var CL = (function () {
     SIM.onTurnStart = onTurnStart;
+    SIM.onVictory = onVictory;
     // Private
     var CHAT_MSG_LIMIT = 128;
 
@@ -45,6 +46,10 @@ var CL = (function () {
 
     function clearClients() {
         clientList = [];
+    }
+
+    function onVictory(id) {
+        if (module.onVictory) module.onVictory(id);
     }
 
     function onTurnStart(id) {

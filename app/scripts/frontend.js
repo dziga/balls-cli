@@ -30,6 +30,11 @@ var FE = (function () {
         PAINTER.startGame();
         SIMR.start(document.getElementById("game_canvas"));
         resizeCanvas();
+        if (PAINTER.playSoundChecked()) {
+            console.log("playing sound");
+            var snd = new Audio("sounds/whisle.mp3");
+            snd.play();
+        }
     }
 
     function getMouseCoords(event, element) {
@@ -100,6 +105,10 @@ var FE = (function () {
       PAINTER.printMessage(name, message);
     }
 
+    function displayVictoryDialog(id) {
+      PAINTER.endGame(CL.getClientName(id) + " has won the match!");
+    }
+
     function resizeCanvas() {
         if ($("#screen_game:visible").length > 0) {
           var canvas = document.getElementById("game_canvas");
@@ -132,6 +141,7 @@ var FE = (function () {
         CL.connect(onConnected);
         CL.onClientListChanged = refreshClientList;
         CL.onGameStarted = startGame;
+        CL.onVictory = displayVictoryDialog;
         CL.onChatMessage = displayChatMessage;
         CL.onInfoMessage = displayInfoMessage;
         var canvas = document.getElementById("game_input_area");
