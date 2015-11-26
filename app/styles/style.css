@@ -90,4 +90,5 @@ html, body {
   position: absolute;
   z-index:100;
   width:100%;
+  padding: 4px;
 }
