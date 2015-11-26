@@ -56,12 +56,43 @@
 				</div>
 			</div>
 			<div id = "main_connected" class="hidden-section">
-				<div class="row text-center top-buffer-medium">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="menu-item navbar-brand" data-toggle="modal" data-target="#change_name_modal" href="#">
+                <span class="glyphicon glyphicon-user"></span>
+                <span id="name_display"></span>
+              </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a id="button_main_host" class="menu-item" href="#">Host</a></li>
+                <li><a id="button_main_join" class="menu-item" data-toggle="modal" data-target="#modal_players_join" href="#">Join</a></li>
+                <li><a id="button_main_bot" class="menu-item" href="#">vs AI</a></li>
+                <li><a id="button_players" class="menu-item" data-toggle="modal" data-target="#modal_players" href="#">Players</a></li>
+                <li><a id="checkbox_main_playsound" class="menu-item" href="#">
+                  <span class="glyphicon glyphicon glyphicon-volume-up"></span>
+                </a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+				<!-- <div class="row text-center top-buffer-medium">
 					<div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
 						<div class="input-group">
-							<input id="set_name" class="form-control" type="text" />
+							 <input id="set_name" class="form-control" type="text" />
 				      <span class="input-group-btn">
-				        <button id="button_main_edit" class="btn btn-primary glyphicon glyphicon-edit" type="button"></button>
+				         <button id="button_main_edit" class="btn btn-primary glyphicon glyphicon-edit" type="button"></button>
 				      </span>
 				    </div>
 					</div>
@@ -78,10 +109,34 @@
 					<div class="checkbox">
 						<label><input id="checkbox_main_playsound" type="checkbox" value=""/>Play a sound when the match starts</label>
 					</div>
-				</div>
+				</div> -->
 				<div class="row text-center top-buffer-medium">
-					<div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
-						<textarea id = "main_chat_container" disabled class="form-control" rows="10"></textarea>
+					<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+
+            <!-- new chat -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-comment"></span> Chat
+                    </div>
+                    <div id="main_chat_container" class="panel-body">
+                        <ul  class="chat">
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="input_main_chat" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-warning btn-sm" id="button_main_send">
+                                    Send</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- new chat -->
+
+						<!-- <div id = "main_chat_container" class="form-control"></div>
 				    <div class="input-group">
 							<input id="input_main_chat" type="text" class="form-control" placeholder="chat">
 				      <span class="input-group-btn">
@@ -89,7 +144,7 @@
 				      </span>
 				    </div>
 				  </div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
@@ -140,7 +195,30 @@
 		</div>
 
 		<div id="modal_chat" class="modal fade" role="dialog">
-			<div class="modal-dialog">
+      <div class="modal-dialog">
+				<!-- <div class="modal-content"> -->
+          <div class="panel panel-primary">
+              <div class="panel-heading">
+                  <span class="glyphicon glyphicon-comment"></span> Chat
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div id="game_chat_container" class="panel-body">
+                  <ul  class="chat">
+                  </ul>
+              </div>
+              <div class="panel-footer">
+                  <div class="input-group">
+                      <input id="input_game_chat" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                      <span class="input-group-btn">
+                          <button class="btn btn-warning btn-sm" id="button_game_send">
+                              Send</button>
+                      </span>
+                  </div>
+              </div>
+          </div>
+        <!-- </div> -->
+      </div>
+			<!-- <div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -156,7 +234,7 @@
 							</div>
 						</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 		<div id="modal_exit" class="modal fade" role="dialog">
@@ -198,6 +276,25 @@
 			</div>
 		</div>
 
+    <div id="change_name_modal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Change name</h4>
+					</div>
+					<div class="modal-body">
+            <input id="set_name" class="form-control" type="text" />
+					</div>
+          <div class="modal-footer">
+            <button id="button_main_edit" class="btn btn-primary" data-dismiss="modal" type="button">Ok</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
@@ -221,9 +318,9 @@
     <!-- endbuild -->
 
     <!-- build:remove -->
-    <script src="http://46.101.214.124:8080/sh_vector.js"></script>
-    <script src="http://46.101.214.124:8080/sh_collisions.js"></script>
-    <script src="http://46.101.214.124:8080/sh_simulation.js"></script>
+    <script src="http://46.101.214.124:8090/sh_vector.js"></script>
+    <script src="http://46.101.214.124:8090/sh_collisions.js"></script>
+    <script src="http://46.101.214.124:8090/sh_simulation.js"></script>
     <!-- /build -->
     <!-- build:template
     <script src="<%=vector %>"></script>

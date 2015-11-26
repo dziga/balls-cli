@@ -4,6 +4,10 @@ $(document).ready(function () {
 
   $('#input_name').focus();
 
+  $('a.menu-item').click(function(e){
+    e.preventDefault();
+  })
+
   $('#button_main_ok').click(function() {
     var name = $("#input_name").val();
     $('#button_main_ok').addClass("disabled");
@@ -13,6 +17,7 @@ $(document).ready(function () {
   $('#button_main_edit').click(function() {
     var name = $("#set_name").val();
     FE.setName(name);
+    $('#name_display').text(' '+name);
   });
 
   $('#input_name').on("keypress", function(event) {
@@ -66,6 +71,10 @@ $(document).ready(function () {
       $('#button_main_host').text('Host');
     }
   });
+
+  $('#checkbox_main_playsound').click(function(){
+    $(this).find('span').toggleClass("glyphicon-volume-up glyphicon-volume-off");
+  })
 
   $('#button_main_send, #button_game_send').click(function(){
     var input;
@@ -147,12 +156,19 @@ var PAINTER = (function () {
 
   var addMessageSpan = function (divId, message) {
       if ($(divId).text() != "")
-          $(divId).append("\n");
+          $(divId).append("yes</br>");
       $(divId).append(message);
   }
 
   var scrollToBottom = function (id) {
       $(id).scrollTop($(id)[0].scrollHeight)
+  }
+
+  var addChatMessage = function (id, name, message) {
+    var first = "<li class='clearfix'><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>";
+    var second = "</strong></div><p>";
+    var third = "</p></div></li>";
+    $(id).children().first().append(first + getSafeString(name) + second + getSafeString(message) + third);
   }
 
   return {
@@ -185,6 +201,7 @@ var PAINTER = (function () {
       $('#screen_main').hide();
       $('#main_connected').show();
       $('#set_name').val(name);
+      $('#name_display').text(' '+name);
     },
     displayErrorMessage: function(reason) {
       $("#error_login").text(reason);
@@ -192,23 +209,16 @@ var PAINTER = (function () {
     printMessage: function(name, message) {
 
       if ($('#screen_game:visible').length) {
-        if (name == null) {
-          $("#player_left_game_message").text(message);
-          $('#player_left_game').modal('show');
-        }
-        else {
-          message = "[" + getSafeString(name) + "]: " + getSafeString(message);
-          addMessageSpan("#game_chat_container", message);
-          scrollToBottom("#game_chat_container");
-          if ($('#set_name').val() != name) {
-            $('#modal_chat_init_button').css('color', 'red');
-            $('#modal_chat_init_button').css('background-color', 'whitesmoke');
-          }
+        addChatMessage("#game_chat_container", name ? name : "", message);
+        scrollToBottom("#game_chat_container");
+        if ($('#set_name').val() != name) {
+          $('#modal_chat_init_button').css('color', 'red');
+          $('#modal_chat_init_button').css('background-color', 'whitesmoke');
         }
       }
       else {
-          addMessageSpan("#main_chat_container", message);
-          scrollToBottom("#main_chat_container");
+        addChatMessage("#main_chat_container", name ? name : "", message);
+        scrollToBottom("#main_chat_container");
       }
 
     },
@@ -222,7 +232,7 @@ var PAINTER = (function () {
       $('#modal_victory').modal({backdrop: 'static', keyboard: false});
     },
     playSoundChecked: function() {
-        return $('#checkbox_main_playsound').is(':checked');
+        return $('#checkbox_main_playsound').find('span').hasClass("glyphicon-volume-up");
     }
 
   }

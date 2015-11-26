@@ -5,85 +5,176 @@
   padding: 0.2em 0;
 }
 
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+/* navbar */
+.navbar-default {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #fff;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+.navbar-default .navbar-nav > li > a:hover {
+    background-color: #2e6da4;
+    color: #fff;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
+.navbar-default .navbar-nav > li > a:focus {
+    background-color: #337ab7;
+    outline: none;
+    color: #fff;
 }
 
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover {
+    color: #fff;
+    background-color: #2e6da4;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #fff;
+  outline: none;
+  background-color: #337ab7;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover {
+    color: #fff;
+    background-color: #2e6da4;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #fff;
+    outline: none;
+    background-color: #337ab7;
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+/* mobile version */
+.navbar-default .navbar-toggle {
+    border: 2px solid #fff;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #337ab7;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
 }
 
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #fff;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+        color: #fff;
+    }
+    .navbar .navbar-nav {
+      width:100%;
+    }
+
+    .navbar-default .navbar-nav > .active > a:focus {
+      color: #fff;
+      outline: none;
+      background-color: #337ab7;
+    }
+
+    .navbar-default .navbar-nav > .open > a:focus {
+        color: #fff;
+        outline: none;
+        background-color: #337ab7;
+    }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
+.chat
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.marketing p + h4 {
-  margin-top: 28px;
+.chat li
+{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+.chat li.left .chat-body
+{
+    margin-left: 60px;
+}
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
+.chat li.right .chat-body
+{
+    margin-right: 60px;
+}
 
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
 
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.chat li .chat-body p
+{
+    margin: 0;
+    color: #777777;
+}
+
+.panel .slidedown .glyphicon, .chat .glyphicon
+{
+    margin-right: 5px;
+}
+
+.panel-body
+{
+    overflow-y: scroll;
+    height: 250px;
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
 }
