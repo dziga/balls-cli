@@ -154,12 +154,6 @@ var PAINTER = (function () {
       return s.replace(lt, "&lt;").replace(gt, "&gt;").replace(ap, "&#39;").replace(ic, "&#34;");
   }
 
-  var addMessageSpan = function (divId, message) {
-      if ($(divId).text() != "")
-          $(divId).append("yes</br>");
-      $(divId).append(message);
-  }
-
   var scrollToBottom = function (id) {
       $(id).scrollTop($(id)[0].scrollHeight)
   }
