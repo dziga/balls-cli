@@ -2,6 +2,8 @@ $(document).ready(function () {
 
   FE.onPageLoad();
 
+  $('.navbar-toggle').trigger('click');
+
   $('#input_name').focus();
 
   $('a.menu-item').click(function(e){
@@ -41,11 +43,11 @@ $(document).ready(function () {
     $('#screen_game').hide();
     $('#main_connected').show();
     $('body').toggleClass("background-color");
-    $('#game_chat_container').children().first.text('');
+    $('#game_chat_container').children().first().text('');
     FE.mainMenu();
     $('#button_main_join').prop('disabled', false);
     $('#button_main_bot').prop('disabled', false);
-    $('#button_main_host').text('Host');
+    $('#button_main_host').children().first().text('Host');
   });
 
   $('#back_to_lobby_button').click(function(){
@@ -55,7 +57,7 @@ $(document).ready(function () {
 
     $('#button_main_join').prop('disabled', false);
     $('#button_main_bot').prop('disabled', false);
-    $('#button_main_host').text('Host');
+    $('#button_main_host').children().first().text('Host');
     FE.mainMenu();
   });
 
@@ -64,11 +66,11 @@ $(document).ready(function () {
     if (!hosting) {
       $('#button_main_join').prop('disabled', true);
       $('#button_main_bot').prop('disabled', true);
-      $('#button_main_host').text('Stop Hosting');
+      $('#button_main_host').children().first().text('Stop Hosting');
     } else {
       $('#button_main_join').prop('disabled', false);
       $('#button_main_bot').prop('disabled', false);
-      $('#button_main_host').text('Host');
+      $('#button_main_host').children().first().text('Host');
     }
   });
 
@@ -133,7 +135,7 @@ $(document).ready(function () {
     FE.mainMenu();
     $('#button_main_join').prop('disabled', false);
     $('#button_main_bot').prop('disabled', false);
-    $('#button_main_host').text('Host');
+    $('#button_main_host').children().first().text('Host');
   });
 
   $('#modal_chat_init_button').click(function() {

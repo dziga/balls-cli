@@ -56,9 +56,8 @@
 				</div>
 			</div>
 			<div id = "main_connected" class="hidden-section">
-        <nav class="navbar navbar-default">
+        <!-- <nav class="navbar navbar-default">
           <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -72,7 +71,6 @@
               </a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li><a id="button_main_host" class="menu-item" href="#">Host</a></li>
@@ -85,14 +83,57 @@
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> -->
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12 header-top">
+            <a class="navbar-brand" data-toggle="modal" data-target="#change_name_modal" href="#">
+              <span class="glyphicon glyphicon-user"></span>
+              <span id="name_display"></span>
+            </a>
+            <a id="checkbox_main_playsound" class="menu-item pull-right" href="#">
+              <span class="glyphicon glyphicon glyphicon-volume-up"></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12 square-menu">
+            <div class="square blue-circle">
+              <a id="button_main_host" class="square-content menu-item" href="#">
+                <div class="square-text">
+                  Host
+                </div>
+              </a>
+            </div>
+            <div class="square red-circle">
+              <a id="button_main_join" class="square-content menu-item" data-toggle="modal" data-target="#modal_players_join" href="#">
+                <div class="square-text">
+                  Join
+                </div>
+              </a>
+            </div>
+            <div class="square blue-circle">
+              <a id="button_main_bot" class="square-content menu-item" href="#">
+                <div class="square-text">
+                  vs&nbspAI
+                </div>
+              </a>
+            </div>
+            <div class="square red-circle">
+              <a id="button_players" class="square-content menu-item" data-toggle="modal" data-target="#modal_players" href="#">
+                <div class="square-text">
+                  Players
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
 
 				<div class="row text-center top-buffer-medium">
-					<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+					<div class="full-width square-large">
+
             <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <span class="glyphicon glyphicon-comment"></span> Chat
-                </div>
                 <div id="main_chat_container" class="panel-body">
                     <ul  class="chat">
                     </ul>
