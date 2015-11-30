@@ -33,7 +33,7 @@ html, body {
 
 .header-top {
   background-color: #fff;
-  border-bottom: solid 1px #ddd;
+  border-bottom: solid 2px #ddd;
 }
 
 .header-top > a {
@@ -227,6 +227,72 @@ html, body {
     color: #777777;
 }
 
+.chat-ballon-right:after {
+  content: "";
+  position: absolute;
+  /*bottom: -20px;*/
+  right: 50px;
+  border-width: 20px 0 0 20px;
+  border-style: solid;
+  border-color: #4486f6 transparent;
+  display: block;
+  width: 0;
+}
+
+.chat-ballon-right {
+  position: relative;
+  padding: 8px;
+  /*margin: 1em 0 3em;*/
+  color: #fff;
+  background: #4486f6;
+  border-radius: 10px;
+}
+
+.chat-author-right {
+  color: #555;
+  margin-right: 40px;
+  text-align: right;
+  overflow-wrap: break-word;
+}
+
+.chat-ballon-left:after {
+  content: "";
+  position: absolute;
+  /*bottom: -20px;*/
+  left: 50px;
+  border-width: 20px 0 0 20px;
+  border-style: solid;
+  border-color: #d84a38 transparent;
+  display: block;
+  width: 0;
+}
+
+.chat-ballon-left {
+  position: relative;
+  padding: 8px;
+  /*margin: 1em 0 3em;*/
+  color: #fff;
+  background: #d84a38;
+  border-radius: 10px;
+}
+
+.chat-author-left {
+  color: #555;
+  margin-left: 60px;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.chat-ballon {
+  position: relative;
+  padding: 8px;
+  /*margin: 1em 0 3em;*/
+  color: #555;
+  background: #fff;
+  border-radius: 10px;
+  border: solid 1px #ddd;
+}
+
 .panel .slidedown .glyphicon, .chat .glyphicon
 {
     margin-right: 5px;
@@ -240,11 +306,14 @@ html, body {
 {
     overflow-y: scroll;
     height: 40vmax;
-    background-color: #fff;
+    background-color: #f5f5f5;
+    padding-bottom: 20px;
+    height: inherit;
 }
 
 .panel-primary {
   border-color: #ddd;
+  height: inherit;
 }
 
 .panel-footer {
@@ -253,7 +322,8 @@ html, body {
   bottom: 0;
 }
 
-#button_main_send {
+#button_main_send,
+#button_game_send {
   background-color: #d84a38;
   border-color: #d84a38;
 }

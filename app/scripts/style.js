@@ -148,6 +148,10 @@ $(document).ready(function () {
 
 var PAINTER = (function () {
 
+  var currentUser = function (name) {
+    return $('#set_name').val() === name;
+  }
+
   var getSafeString = function (s) {
       var lt = /</g,
       gt = />/g,
@@ -161,10 +165,21 @@ var PAINTER = (function () {
   }
 
   var addChatMessage = function (id, name, message) {
-    var first = "<li class='clearfix'><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>";
-    var second = "</strong></div><p>";
-    var third = "</p></div></li>";
-    $(id).children().first().append(first + getSafeString(name) + second + getSafeString(message) + third);
+    var post = "";
+    if (name) {
+      if(currentUser(name)) {
+        post += "<p class=\"chat-ballon-left\">"+getSafeString(message)+"</p>";
+        post += "<p class=\"chat-author-left\">"+getSafeString(name)+"</p>";
+      }
+      else {
+        post += "<p class=\"chat-ballon-right\">"+getSafeString(message)+"</p>";
+        post += "<p class=\"chat-author-right\">"+getSafeString(name)+"</p>";
+      }
+    }
+    else {
+      post = "<p class=\"chat-ballon\">" + getSafeString(message) + "</p>"
+    }
+    $(id).append(post).show('slow');
   }
 
   return {
@@ -205,23 +220,20 @@ var PAINTER = (function () {
     printMessage: function(name, message) {
 
       if ($('#screen_game:visible').length) {
-        addChatMessage("#game_chat_container", name ? name : "", message);
+        addChatMessage("#game_chat_container", name, message);
         scrollToBottom("#game_chat_container");
-        if ($('#set_name').val() != name) {
+        if (!currentUser(name)) {
           $('#modal_chat_init_button').css('color', 'red');
           $('#modal_chat_init_button').css('background-color', 'whitesmoke');
         }
       }
-      else {
-        addChatMessage("#main_chat_container", name ? name : "", message);
-        scrollToBottom("#main_chat_container");
-      }
+      addChatMessage("#main_chat_container", name, message);
+      scrollToBottom("#main_chat_container");
 
     },
     startGame: function() {
       $('#main_connected').hide();
       $('#screen_game').show();
-      $('body').toggleClass("background-color");
     },
     endGame: function(message) {
       $('#victory_message').text(message);
