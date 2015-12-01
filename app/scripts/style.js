@@ -39,26 +39,14 @@ $(document).ready(function () {
     FE.joinBot();
   });
 
-  $('#exit_game_button').click(function(){
+  $('#exit_game_button, #back_to_lobby_button').click(function(){
     $('#screen_game').hide();
     $('#main_connected').show();
-    $('body').toggleClass("background-color");
     $('#game_chat_container').text('');
     FE.mainMenu();
     $('#button_main_join').prop('disabled', false);
     $('#button_main_bot').prop('disabled', false);
     $('#button_main_host').children().first().text('Host');
-  });
-
-  $('#back_to_lobby_button').click(function(){
-    $('#screen_game').hide();
-    $('#main_connected').show();
-    $('body').toggleClass("background-color");
-
-    $('#button_main_join').prop('disabled', false);
-    $('#button_main_bot').prop('disabled', false);
-    $('#button_main_host').children().first().text('Host');
-    FE.mainMenu();
   });
 
   $('#button_main_host').click(function() {
@@ -124,7 +112,6 @@ $(document).ready(function () {
     FE.joinClient(selectedPlayer);
     $('#main_connected').hide();
     $('#screen_game').show();
-    $('body').toggleClass("background-color");
   });
 
   $('#button_join_refresh').click(function(){
