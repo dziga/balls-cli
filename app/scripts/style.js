@@ -127,7 +127,7 @@ $(document).ready(function () {
 
   $('#modal_chat_init_button').click(function() {
     $(this).css('color', 'white');
-    $(this).css('background-color', 'blue');
+    $(this).css('background-color', '#4486f6');
   });
 
 });
@@ -210,7 +210,7 @@ var PAINTER = (function () {
         addChatMessage("#game_chat_container", name, message);
         scrollToBottom("#game_chat_container");
         if (!currentUser(name)) {
-          $('#modal_chat_init_button').css('color', 'red');
+          $('#modal_chat_init_button').css('color', '#d84a38');
           $('#modal_chat_init_button').css('background-color', 'whitesmoke');
         }
       }
