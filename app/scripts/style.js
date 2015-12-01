@@ -43,7 +43,7 @@ $(document).ready(function () {
     $('#screen_game').hide();
     $('#main_connected').show();
     $('body').toggleClass("background-color");
-    $('#game_chat_container').children().first().text('');
+    $('#game_chat_container').text('');
     FE.mainMenu();
     $('#button_main_join').prop('disabled', false);
     $('#button_main_bot').prop('disabled', false);
