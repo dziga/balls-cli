@@ -21,6 +21,10 @@ var FE = (function () {
       PAINTER.enableConnection();
     }
 
+    function onOpponentLeft(opponentId) {
+      PAINTER.endGame(CL.getClientName(opponentId) + " has left the match!");
+    }
+
     function refreshClientList(clientList) {
       PAINTER.repaintClientsLists(clientList);
     }
@@ -141,6 +145,7 @@ var FE = (function () {
         CL.connect(onConnected);
         CL.onClientListChanged = refreshClientList;
         CL.onGameStarted = startGame;
+        CL.onOpponentLeft = onOpponentLeft;
         CL.onVictory = displayVictoryDialog;
         CL.onChatMessage = displayChatMessage;
         CL.onInfoMessage = displayInfoMessage;

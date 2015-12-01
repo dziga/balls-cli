@@ -78,6 +78,8 @@ var CL = (function () {
     module.onChatMessage = null;
     module.onInfoMessage = null;
     module.onTurnStart = null;
+    module.onVictory = null;
+    module.onOpponentLeft = null;
 
     module.clientName = "";
     module.clientId = "";
@@ -134,6 +136,9 @@ var CL = (function () {
                     case "clientDisconnected":
                         console.log(json.msgData.name + " disconnected.");
                         if (module.onInfoMessage) module.onInfoMessage(json.msgData.name + " disconnected.");
+                        if (json.msgData.id == module.opponentId) {
+                            if (module.onOpponentLeft) module.onOpponentLeft(module.opponentId);
+                        }
                         removeClient(json.msgData.id);
                         if (module.onClientListChanged) module.onClientListChanged(clientList);
                         break;
@@ -148,7 +153,8 @@ var CL = (function () {
                         var client = getClient(json.msgData.id);
                         client.state = json.msgData.state;
                         if (client.id == module.opponentId && client.state == "idle") {
-                            if (module.onInfoMessage) module.onInfoMessage(getClient(module.opponentId).name + " has left the game!");
+                            // if (module.onInfoMessage) module.onInfoMessage(getClient(module.opponentId).name + " has left the game!");
+                            if (module.onOpponentLeft) module.onOpponentLeft(module.opponentId);
                         }
                         if (client.id == module.clientId) {
                             module.clientState = client.state;
